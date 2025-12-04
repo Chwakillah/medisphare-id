@@ -3,10 +3,10 @@ import { Calendar, Clock, ArrowLeft, User } from "lucide-react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 // Import gambar berita
-import img1 from "/project/medisphare/src/assets/news/1.png";
-import img2 from "/project/medisphare/src/assets/news/2.png";
-import img3 from "/project/medisphare/src/assets/news/3.png";
-import img4 from "/project/medisphare/src/assets/news/4.png";
+import img1 from "../../assets/news/1.png";
+import img2 from "../../assets/news/2.png";
+import img3 from "../../assets/news/3.png";
+import img4 from "../../assets/news/4.png";
 
 // Data lengkap berita dengan konten
 const newsDatabase = {
