@@ -9,9 +9,9 @@ import {
 } from "lucide-react";
 import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
-import farmasiImg from "/project/medisphare/src/assets/sejarah.svg";
-import denahImg1 from "/project/medisphare/src/assets/denah1.png";
-import denahImg2 from "/project/medisphare/src/assets/denah2.png";
+import farmasiImg from "../../assets/sejarah.svg";
+import denahImg1 from "../../assets/denah1.png";
+import denahImg2 from "../../assets/denah2.png";
 
 const Profil = () => {
   const [activeTimeline, setActiveTimeline] = useState(null);
