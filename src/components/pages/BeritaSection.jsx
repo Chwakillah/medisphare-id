@@ -2,10 +2,10 @@ import React from "react";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import img1 from "/project/medisphare/src/assets/news/1.png";
-import img2 from "/project/medisphare/src/assets/news/2.png";
-import img3 from "/project/medisphare/src/assets/news/3.png";
-import img4 from "/project/medisphare/src/assets/news/4.png";
+import img1 from "../../assets/news/1.png";
+import img2 from "../../assets/news/2.png";
+import img3 from "../../assets/news/3.png";
+import img4 from "../../assets/news/4.png";
 
 const newss = [
   {
