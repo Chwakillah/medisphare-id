@@ -286,35 +286,91 @@ const Produk = () => {
               </div>
 
               {/* Right Side - Content */}
-              <div className="md:w-1/2 p-8 md:p-10">
-                {/* Category Badge (small) */}
-                <span className="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-4">
+              {/* Right Side - Content */}
+              <div className="md:w-1/2 p-8 md:p-10 flex flex-col">
+                {/* Category Badge */}
+                <span className="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-4 w-fit">
                   {iconFor(selectedProduct.category)} {selectedProduct.category}
                 </span>
 
                 {/* Product Name */}
-                <h3 className="text-4xl font-bold text-gray-900 mb-3">
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
                   {selectedProduct.name}
                 </h3>
 
-                {/* Small meta (dosis / harga) - tampil sebagai teks biasa tanpa panel */}
-                <p className="text-sm text-gray-600 mb-4">
-                  {selectedProduct.dosage ? `Dosis: ${selectedProduct.dosage}` : ""}
-                  {selectedProduct.price ? ` • Harga: ${selectedProduct.price}` : ""}
-                </p>
+                {/* Kategori Spesifik */}
+                {selectedProduct.specific_category && (
+                  <p className="text-blue-600 font-semibold text-sm mb-4">
+                    {selectedProduct.specific_category}
+                  </p>
+                )}
 
-                {/* Deskripsi */}
-                <p className="text-gray-600 mb-6">{selectedProduct.description || ""}</p>
+                {/* Price Badge */}
+                {selectedProduct.price && (
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl px-5 py-3 mb-5 inline-block w-fit">
+                    <p className="text-xs text-green-700 font-semibold mb-1">Harga</p>
+                    <p className="text-2xl font-bold text-green-800">
+                      Rp {selectedProduct.price?.toLocaleString('id-ID') || selectedProduct.price}
+                    </p>
+                  </div>
+                )}
+
+                {/* Description */}
+                {selectedProduct.description && (
+                  <div className="mb-6">
+                    <h4 className="text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Deskripsi Produk</h4>
+                    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                      {selectedProduct.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Product Details Panel */}
+                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-5 mb-6 border border-gray-200">
+                  <h4 className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">Informasi Detail</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between pb-2 border-b border-gray-200">
+                      <span className="text-sm text-gray-600 flex items-center gap-2">
+                        <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                        </svg>
+                        Kategori
+                      </span>
+                      <span className="font-semibold text-gray-900">{selectedProduct.category}</span>
+                    </div>
+                    {selectedProduct.dosage && (
+                      <div className="flex items-center justify-between pb-2 border-b border-gray-200">
+                        <span className="text-sm text-gray-600 flex items-center gap-2">
+                          <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                          Dosis
+                        </span>
+                        <span className="font-semibold text-gray-900">{selectedProduct.dosage}</span>
+                      </div>
+                    )}
+                    {selectedProduct.specific_category && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-600 flex items-center gap-2">
+                          <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                          Jenis
+                        </span>
+                        <span className="font-semibold text-gray-900 text-right text-sm">{selectedProduct.specific_category}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <button onClick={closeModal} className="w-full px-8 bg-gray-100 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-200 transition-colors duration-200">
+                <div className="flex gap-3 mt-auto">
+                  <button onClick={closeModal} className="flex-1 px-8 bg-gray-100 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all duration-200 hover:shadow-md">
                     Tutup
                   </button>
-                  {/* contoh tombol lain (beli / tambah ke keranjang) - optional */}
                   {selectedProduct.price && (
-                    <button className="w-full px-8 bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors duration-200">
-                      Lihat / Beli
+                    <button className="flex-1 px-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl font-bold hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                      Hubungi Kami
                     </button>
                   )}
                 </div>
